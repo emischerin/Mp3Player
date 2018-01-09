@@ -7,8 +7,12 @@ using NAudio;
 using NAudio.Wave;
 namespace Mp3Player
 {
-        class Mp3Player
+        class Player
         {
+                // Данный класс так же проигрывает WAV файлы. Необходимости создавать отдельный класс
+                // для проигрывания WAV нет.
+                
+
                 IWavePlayer waveoutdevice;
                 AudioFileReader af;
 

@@ -10,14 +10,40 @@ namespace Mp3Player
 {
         class Converter
         {
-                private string path = "C:\\users/Egor/desktop/summernight.mp3";
-                private string filename = "C:\\users/Egor/desktop/summernight1.wav";
+                private string outputfile;
+                private string inputfile;
 
-                public void ConvertToWav(string outputfile)
+                public string Outputfile
                 {
-                        using (Mp3FileReader mp3reader = new Mp3FileReader(path))
+                       get { return outputfile; }
+                       set { outputfile = value; }
+                }
+
+                public string Inputfile
+                {
+                        get { return inputfile; }
+                        set { Outputfile = value; }
+                }
+
+                public Converter()
+                {
+
+                }
+
+                public Converter(string inputfile, string outputfile)
+                {
+                        this.inputfile = inputfile;
+                        this.Outputfile = outputfile;
+                }
+
+                public void ConvertToWav()
+                {
+                        if ((inputfile != null) && (outputfile != null))
                         {
-                                WaveFileWriter.CreateWaveFile(outputfile, mp3reader);
+                                using (Mp3FileReader mp3reader = new Mp3FileReader(inputfile))
+                                {
+                                        WaveFileWriter.CreateWaveFile(outputfile, mp3reader);
+                                }
                         }
                 }
                 

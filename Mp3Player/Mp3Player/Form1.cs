@@ -14,8 +14,8 @@ namespace Mp3Player
         {
                 private string outputfile;
                 private string inputfile;
-                Mp3Player mp3 = new Mp3Player();
-                Converter conv = new Converter();
+                Player player = new Player();
+               
                 
 
                 public Form1()
@@ -28,22 +28,19 @@ namespace Mp3Player
                         
                        if (inputfile != null)
                         {
-                                mp3.Play(inputfile);
+                                player.Play(inputfile);
                         }
                 }
 
                 private void StopButton_Click(object sender, EventArgs e)
                 {
-                        mp3.Stop();
+                        player.Stop();
                 }
 
                 private void ConvertButton_Click(object sender, EventArgs e)
                 {
-                        if (outputfile != null)
-                        {
-                                conv.ConvertToWav(outputfile);
-                        }
-                        
+                        ConvertForm cf = new ConvertForm();
+                        cf.Show();
                 }
 
                 private void OFD_Click(object sender, EventArgs e)
